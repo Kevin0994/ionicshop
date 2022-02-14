@@ -1,0 +1,7 @@
+{
+  "name": "Post_link",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
