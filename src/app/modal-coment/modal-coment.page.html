@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>modalComent</ion-title>
+    <ion-buttons slot="primary" slot="start">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="arrow-back-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let item of Items">
+    <ion-grid>
+      <ion-row>
+        <ion-avatar>
+          <ion-img [src]= "item.foto_perfil">  </ion-img>
+        </ion-avatar>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>{{item.nombres}} {{item.apellidos}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>{{item.contenido}}</ion-card-content>
+        </ion-card>
+        <ion-buttons *ngIf="User==item.idUsuario" (click)="EliminarComen(item.idcomentario)">
+          <ion-button>
+            <ion-icon  name="trash"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-row>
+    </ion-grid>
+    <br>
+  </ion-item>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <form [formGroup]="formRegistro" id="form">
+    <ion-item>
+      <ion-input formControlName="comentario" placeholder="Escribe un comentario"></ion-input>
+      <ion-buttons slot="primary" slot="end">
+        <ion-button (click)="Registrar()">
+          <ion-icon name="send-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </form>
+</ion-footer>

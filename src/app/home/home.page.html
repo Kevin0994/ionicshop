@@ -1,20 +1,60 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button menu="main-menu"></ion-menu-button>
+    </ion-buttons>
     <ion-title>
-      Blank
+      Home
     </ion-title>
+    <ion-buttons slot="end" (click)="salir()">
+      <ion-icon id="salir" name="exit-outline"></ion-icon>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content padding>
+  
+  <ion-item *ngFor="let item of Items">
+    <ion-grid>
+      <ion-row>
+        <ion-card>
+          <ion-card-header id="headertitle">
+            <ion-grid>
+              <ion-row>
+                <ion-avatar>
+                  <ion-img [src]= "item.foto_perfil">  </ion-img>
+                </ion-avatar> 
+                <ion-card-title>{{item.nombres}} {{item.apellidos}}</ion-card-title>
+                  <ion-buttons *ngIf="idUsuario==item.idUser" (click)="EliminarPost(item.idPost)">
+                    <ion-button>
+                      <ion-icon  name="trash"></ion-icon>
+                    </ion-button>
+                  </ion-buttons>
+              </ion-row>
+            </ion-grid>
+          </ion-card-header>
+          <ion-card-content>{{item.contenido}}</ion-card-content>
+          <img src={{item.imagen}}/>
+        </ion-card>
+      </ion-row>
+      <ion-row>
+        <ion-buttons id="class-coment" expand="full" (click)="openModal(item.idPost)">
+          <ion-label>Comentar</ion-label>
+          <ion-button>
+            <ion-icon name="chatbubble-outline"></ion-icon>
+          </ion-button>
+        </ion-buttons>
+      </ion-row>
+    </ion-grid>
+    <br>
+  </ion-item>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button [routerLink]="['/new-post']" color="danger"  type="button">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+    
+  
+  
+  
 </ion-content>

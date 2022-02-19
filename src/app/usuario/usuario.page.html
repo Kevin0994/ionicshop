@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button id="trigger-button">
+        <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-perfil">
+    <ion-avatar>
+      <ion-img [src]="img"></ion-img>
+    </ion-avatar>
+  </div>
+  <div class="content-button">
+    <ion-input class="d-none" (change)="capturarFile($event)" type="file" #photoinput></ion-input>
+  </div>
+  <form 
+    class="content-info"
+    [formGroup]="formRegistro" 
+    (ngSubmit)="saveProfile()"
+  >
+    <label>correo</label>
+    <input formControlName="correo"/>
+    <label>Nombres</label>
+    <input formControlName="nombres"/>
+    <label>Apellidos</label>
+    <input formControlName="apellidos"/>
+    <label position="stacked">Celular</label>
+    <input formControlName="telefono"/>
+    <section class="buttons-accion" >
+      <ion-row class="ion-justify-content-center">
+        <ion-button type="submit" class="buttons-action__save">
+          <ion-icon name="save"></ion-icon> &nbsp; Guardar
+        </ion-button>
+        <ion-button class="buttons-action__cancel" (click)="cancelEditProfile()">
+          <ion-icon name="close"></ion-icon> Cancelar
+        </ion-button>
+      </ion-row>
+    </section>
+  </form>
+</ion-content>
+<ion-popover
+  class="content-popover"
+  trigger="trigger-button"
+  [dismissOnSelect]="true"
+>
+  <ng-template>
+    <ion-content>
+      <ion-list>
+        <ion-list-header><strong>Nino Restaurant</strong></ion-list-header>
+        <ion-item lines="none" button (click)="editProfile()">
+          <ion-icon name="pencil-outline"></ion-icon> 
+          &nbsp; Editar Perfil
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ng-template>
+</ion-popover>

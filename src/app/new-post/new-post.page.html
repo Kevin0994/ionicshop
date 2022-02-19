@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>newPost</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="formRegistro" id="form">
+    <ion-item>
+      <ion-input formControlName="titulo" placeholder="titulo"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input (change)="capturarFile($event)" placeholder="imagen" type="file"></ion-input>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-input formControlName="contenido" placeholder="contenido"></ion-input>
+    </ion-item>
+    <br>
+    <ion-button (click)="Registrar()" expand="block" shape="round">Unete a Nosotros</ion-button>
+  </form>
+ 
+</ion-content>

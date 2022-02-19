@@ -5,6 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
+import { ModalComentPage } from '../modal-coment/modal-coment.page';
 
 
 @NgModule({
@@ -14,6 +15,12 @@ import { HomePageRoutingModule } from './home-routing.module';
     IonicModule,
     HomePageRoutingModule
   ],
-  declarations: [HomePage]
+  declarations: [
+    HomePage,
+    ModalComentPage
+  ],
+  entryComponents:[
+    ModalComentPage
+  ]
 })
 export class HomePageModule {}

@@ -1,0 +1,39 @@
+<ion-header class="ion-no border">
+  <ion-toolbar>
+    <ion-buttons >
+      <ion-button color="primary">
+        <ion-icon ></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+<div id="header">
+  <br>
+  <img src="assets/icon/socialicon.png">
+</div>
+<div>
+
+
+      <form [formGroup]="formLogin" id="form">
+        <ion-item>
+          <ion-input formControlName="correo" placeholder="E-mail"></ion-input>
+        </ion-item>
+        <br>
+        <ion-item>
+          <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+        </ion-item>
+        <br>
+        <ion-button (click)="BuscarUsuario()" expand="block" shape="round">Ingresar<ion-icon name="enter-outline"></ion-icon></ion-button>
+        
+        <ion-button [routerLink]="['/register']" id="regis" expand="block" shape="round" color="medium">Registrarse</ion-button>
+
+      </form>
+
+     
+      <br>
+
+</div>
+  
+</ion-content>

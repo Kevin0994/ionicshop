@@ -1,0 +1,40 @@
+<ion-header class="ion-no border">
+  <ion-toolbar color="medium">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login"></ion-back-button>
+      <ion-label>Crear Cuenta</ion-label>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <form [formGroup]="formRegistro" id="form">
+      <ion-item>
+        <ion-input formControlName="nombres" placeholder="Nombres"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input formControlName="apellidos" placeholder="Apellidos"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input formControlName="correo" placeholder="E-mail"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input formControlName="telefono" placeholder="Telefono"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input formControlName="password" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-item>
+        <ion-input formControlName="confirPassword" type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <br>
+      <ion-button (click)="Registrar()" expand="block" shape="round">Unete a Nosotros</ion-button>
+    </form>
+    <p>Al presionar 'Unete a Nosotrsos' aceptas <br />nuestros terminos y condiciones. </p>
+    
+</ion-content>
