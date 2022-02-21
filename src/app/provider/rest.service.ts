@@ -8,6 +8,7 @@ export class RestProvider {
   public img:any;
   public error:any;
   public status:any=false;
+  public usr:boolean=false;
 
   constructor(public http: HttpClient,) { 
 

@@ -9,11 +9,13 @@
           <p>Bienvenido</p>
         </ion-label>
       </div>
-      <ion-list class="menu-items" lines="none">
-        <ion-item [routerLink]="['/usuario']" class="active">
-          <ion-icon name="person-outline"></ion-icon>Mi perfil
-        </ion-item>
-      </ion-list>
+      <ion-menu-toggle>
+        <ion-list class="menu-items" lines="none">
+          <ion-item [routerLink]="['/usuario']" class="active">
+            <ion-icon name="person-outline"></ion-icon>Mi perfil
+          </ion-item>
+        </ion-list>
+      </ion-menu-toggle>
     </ion-content>
     
   </ion-menu>

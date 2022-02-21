@@ -1,5 +1,8 @@
 <ion-header>
   <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
     <ion-title>Perfil</ion-title>
     <ion-buttons slot="end">
       <ion-button id="trigger-button">
@@ -51,7 +54,7 @@
   <ng-template>
     <ion-content>
       <ion-list>
-        <ion-list-header><strong>Nino Restaurant</strong></ion-list-header>
+        <ion-list-header><strong>Red Link</strong></ion-list-header>
         <ion-item lines="none" button (click)="editProfile()">
           <ion-icon name="pencil-outline"></ion-icon> 
           &nbsp; Editar Perfil

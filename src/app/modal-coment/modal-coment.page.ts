@@ -51,13 +51,14 @@ export class ModalComentPage implements OnInit {
   }
 
   EliminarComen(id:any){
+
     this.proveedor.EliminarComent(id).subscribe(data => {
       console.log(data);
       if(this.proveedor.status){
-        this.ErrorMensajeServidor();
-      }else{
         this.loadComen(this.idPost);
         this.MensajeExito();
+      }else{
+        this.ErrorMensajeServidor();
       }
     })
   }

@@ -21,22 +21,26 @@ export class HomePage implements OnInit{
     public navCtrl:NavController,
     public modalController:ModalController) {
       this.idUsuario=localStorage.getItem('Usuario');
-      console.log(this.idUsuario);
   }
 
   ngOnInit() {
+    
     this.idUsuario=localStorage.getItem('Usuario');
     this.loadInfo();
   }
 
   ionViewWillEnter(){
+    if(this.proveedor.usr){
+      this.proveedor.usr=false;
+      window.location.reload();
+    }
     this.loadInfo();
   }
 
   loadInfo(){
     this.proveedor.loadPost().then(data => {
       this.Items=data;
-      console.log(this.Items);
+      
     }).catch(data => {
       console.log(data);
     })
@@ -56,25 +60,32 @@ export class HomePage implements OnInit{
 
 
   EliminarPost(id:any,iduser:any){
-    console.log(iduser+"+"+this.idUsuario);
+    
     this.proveedor.FiltrarComentarios(id).then(data => {
       this.Comen=data;
-      this.Comen.forEach((element, index) => {
+      console.log(this.Comen.length);
+      if(this.Comen.length!=0){
+        this.Comen.forEach((element, index) => {
+        console.log("Eliminando");
         this.proveedor.EliminarComent(element.idcomentario).subscribe(data => {
           if(index==this.Comen.length-1){
-            console.log("Eliminando");
             this.proveedor.EliminarPost(id).subscribe(data => {
               console.log(data);
-              if(this.proveedor.status){
-                this.ErrorMensajeServidor();
-              }else{
-                this.loadInfo();
-                this.MensajeExito();
-              }
+              this.loadInfo();
+              this.MensajeExito();
             })
           }
         })
       });
+    }else{
+      console.log("EliminandoPost");
+      this.proveedor.EliminarPost(id).subscribe(data => {
+        console.log(data);        
+        this.loadInfo();
+        this.MensajeExito();
+      })
+    }
+
     }).catch(data => {
       console.log(data);
     })

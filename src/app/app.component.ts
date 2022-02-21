@@ -1,23 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AlertController, NavController } from '@ionic/angular';
+import { RestProvider } from './provider/rest.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   
-  public Perfil:any=localStorage.getItem('perfil');
-  public img:any=localStorage.getItem('img');
+  public Perfil:any;
+  public img:any;
 
   constructor(public alertController: AlertController,
-    public navCtrl:NavController) {
+    public navCtrl:NavController,
+    public proveedor: RestProvider,) {
       this.Perfil=localStorage.getItem('perfil');
       this.img=localStorage.getItem('img');
     }
 
     ionViewWillEnter(){
+      this.Perfil=localStorage.getItem('perfil');
+      this.img=localStorage.getItem('img');
+    }
+
+    ngOnInit() {
+      
       this.Perfil=localStorage.getItem('perfil');
       this.img=localStorage.getItem('img');
     }

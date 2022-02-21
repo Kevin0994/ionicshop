@@ -26,7 +26,6 @@ export class UsuarioPage implements OnInit {
   public formulario:any;
   public Usuario:any="init";
   public usuarioPost:UsuarioPut;
-  filesToUpload: Array<File>;
   img: string;
   inputDisabled: boolean;
   public base64TrimmedURL:any;
@@ -86,7 +85,8 @@ export class UsuarioPage implements OnInit {
     this.proveedor.ActualizarUsuario(this.usuarioPost).then(data => {
       console.log(data);
       
-      if(this.proveedor.status){
+      if(this.proveedor.status){ 
+        this.proveedor.usr=true;
         this.navCtrl.navigateRoot('home');
       }else{
         var result=this.proveedor.error;

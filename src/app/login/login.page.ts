@@ -15,7 +15,7 @@ import { RestProvider } from '../provider/rest.service';
 })
 export class LoginPage implements OnInit {
 
-  Usuario:any=[];
+  Usuario:any;
   formLogin: FormGroup;
 
 
@@ -52,6 +52,7 @@ export class LoginPage implements OnInit {
         localStorage.setItem('perfil',this.Usuario[0].nombres+' '+this.Usuario[0].apellidos);
         localStorage.setItem('img',this.Usuario[0].foto_perfil);
         this.navCtrl.navigateRoot('home');
+        window.location.reload();
       }else{
         const alert = await this.alertController.create({
           header: 'Datos incorrectos',
@@ -78,6 +79,7 @@ export class LoginPage implements OnInit {
     var form = this.formLogin.value;
     this.proveedor.BuscarUsuario(form.correo).then(data => {
       this.Usuario=data;
+      console.log(this.Usuario[0].idusuario);
       this.ingresar(this.Usuario[0].idusuario);
     }).catch(data => {
       console.log(data);
